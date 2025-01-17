@@ -60,6 +60,9 @@ def align_face(filepath, predictor):
     """
     unalign_dict = {}
     lm = get_landmark(filepath, predictor)
+    
+    if lm is None or len(lm) != 68:
+        raise ValueError("Invalid or incomplete landmarks detected.")
 
     lm_chin = lm[0: 17]  # left-right
     lm_eyebrow_left = lm[17: 22]  # left-right
